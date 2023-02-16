@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+        <variable
+            name="mainViewModel"
+            type="com.android.study.magicsev2_retrofit.viewModel.RetrofitViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".view.MainActivity">
+
+            <Button
+                android:id="@+id/btRequestSvrCert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:onClick="@{() -> mainViewModel.getServerCert()}"
+                android:text="@string/requestServerCert"/>
+
+            <include
+                android:id="@+id/tvServerCert"
+                layout="@layout/text_with_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:title="@{@string/serverCert}"/>
+
+<!--            <include
+                android:id="@+id/etPlainText"
+                layout="@layout/edit_with_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@={mainViewModel.liveDataPlainText}"
+                app:title="@{@string/plainText}"
+                app:hint="@{@string/hintPlainText}"/>-->
+
+            <EditText
+                android:id="@+id/etPlainText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:hint="@string/hintPlainText"
+                android:text="@={mainViewModel.liveDataPlainText}"/>
+
+
+            <Button
+                android:id="@+id/btSendEncDataWithSessionKey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> mainViewModel.sendSessionKeyAndEncData()}"
+                android:text="@string/sendEncryptedDataWithSessionKey"/>
+
+            <include
+                android:id="@+id/tvServerReceiveData"
+                layout="@layout/text_with_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:title="@{@string/serverReceivedData}"/>
+
+            <Button
+                android:id="@+id/btDec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> mainViewModel.decData()}"
+                android:text="@string/btDec"/>
+
+            <include
+                android:id="@+id/tvDecData"
+                layout="@layout/text_with_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:title="@{@string/serverReceivedEncData}"/>
+        </LinearLayout>
+    </ScrollView>
+</layout>
