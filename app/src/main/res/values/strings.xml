@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MagicSEv2_Retrofit</string>
+    <string name="requestServerCert">서버 인증서 요청</string>
+    <string name="serverCert">서버 인증서</string>
+    <string name="sendEncryptedDataWithSessionKey">세센키/암호문 전송</string>
+    <string name="serverReceivedData">서버에서 받은 데이터</string>
+    <string name="serverReceivedEncData">서버에서 받은 암호문 복호화</string>
+    <string name="btDec">복호화</string>
+    <string name="plainText">평문</string>
+    <string name="hintPlainText">평문을 입력해 주세요</string>
+</resources>
