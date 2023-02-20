@@ -11,8 +11,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class RetrofitClient {
-    private static Retrofit retrofit;
-    private static OkHttpClient okHttpClient;
+    private static RetrofitClient instance;
+    private Retrofit retrofit;
+    private OkHttpClient okHttpClient;
 
     public RetrofitClient() {
         CookieManager cookieManager = new CookieManager();
@@ -32,10 +33,13 @@ public class RetrofitClient {
 
     //    private static final String BASE_URL = "https://jsonplaceholder.typicode.com/";
     public Service getApiService() {
-        return getInstance().create(Service.class);
+        return getInstance().retrofit.create(Service.class);
     }
 
-    private Retrofit getInstance() {
-        return retrofit;
+    public RetrofitClient getInstance() {
+        if (instance == null) {
+            instance = new RetrofitClient();
+        }
+        return instance;
     }
 }

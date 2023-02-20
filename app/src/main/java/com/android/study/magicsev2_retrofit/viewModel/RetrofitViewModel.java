@@ -19,19 +19,18 @@ public class RetrofitViewModel extends ViewModel {
     public MutableLiveData<String> liveDataDecData = new MutableLiveData<>();
     private String sessionKey = null;
     MagicSE2 magicSE2;
-    RetrofitClient client = null;
+    RetrofitClient client = new RetrofitClient().getInstance();
 
     public RetrofitViewModel(MagicSE2 magicSE2) {
         this.magicSE2 = magicSE2;
     }
 
     public void getServerCert() {
-        client = new RetrofitClient();
         Call<String> requestServerCert = client.getApiService().getCert();
         requestServerCert.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                if(response.body() != null) {
+                if (response.body() != null) {
                     liveDataServerCert.postValue(response.body().trim());
                 }
             }
@@ -49,7 +48,7 @@ public class RetrofitViewModel extends ViewModel {
         sendSessionKey.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                if(response.body() != null){
+                if (response.body() != null) {
                     liveServerEncData.setValue(response.body().trim());
                 }
             }
